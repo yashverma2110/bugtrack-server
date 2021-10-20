@@ -92,9 +92,11 @@ router.put("/bug/contributor/remove/:id", auth, async (req, res) => {
   try {
     const bugs = await Bug.find({ _id: req.params.id });
 
-    bugs[0].contributors = bugs[0].contributors.filter(
-      (user) => user.id !== req.body.userId
-    );
+    bugs[0].contributors = bugs[0].contributors.filter((user) => {
+      const userId = user.id.toString();
+      return userId !== req.body.userId;
+    });
+    console.log(bugs[0].contributors, req.body.userId);
     delete bugs[0]._id;
 
     const bug = await Bug.findByIdAndUpdate(req.params.id, bugs[0], {
