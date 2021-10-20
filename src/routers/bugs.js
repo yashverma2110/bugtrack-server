@@ -96,7 +96,6 @@ router.put("/bug/contributor/remove/:id", auth, async (req, res) => {
       const userId = user.id.toString();
       return userId !== req.body.userId;
     });
-    console.log(bugs[0].contributors, req.body.userId);
     delete bugs[0]._id;
 
     const bug = await Bug.findByIdAndUpdate(req.params.id, bugs[0], {
