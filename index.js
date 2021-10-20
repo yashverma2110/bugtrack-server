@@ -1,10 +1,10 @@
 const express = require("express");
-require("./db/mongoose");
+require("./src/db/mongoose");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
-const userRouter = require("./routers/user");
-const bugRouter = require("./routers/bugs");
-const projectsRouter = require("./routers/projects");
+const userRouter = require("./src/routers/user");
+const bugRouter = require("./src/routers/bugs");
+const projectsRouter = require("./src/routers/projects");
 
 const app = express();
 const port = process.env.PORT || 3001;
